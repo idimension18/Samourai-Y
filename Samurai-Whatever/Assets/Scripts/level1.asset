@@ -17,4 +17,10 @@ MonoBehaviour:
     _timings:
     - 1
     - 2
+  - _right: 1
+    _timings:
+    - 1
+    - 2
+    - 2
+    - 2
   _clear: 0
