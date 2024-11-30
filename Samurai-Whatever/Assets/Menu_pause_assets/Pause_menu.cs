@@ -28,8 +28,9 @@ public class Pause_menu : MonoBehaviour
         Time.timeScale = 1;
     }
     
-    void Update()
+    /*void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.activeSelf)
         {
             pauseMenu.SetActive(true);
@@ -40,6 +41,6 @@ public class Pause_menu : MonoBehaviour
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
-    }
+    } */
 }
 
