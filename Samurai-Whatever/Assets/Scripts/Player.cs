@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     public static int score;
     [SerializeField] private float cooldown = 0.1f;
+    [SerializeField] private Animator animator;
     public static Vector3 pos;
     private WaitForSeconds Delay;
 
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour
         Delay = new WaitForSeconds(cooldown);
         inputs = new InputSystem_Actions();
         pos = transform.position;
+
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
     IEnumerator InputCoroutine(Collider2D coll)
     {
         coll.gameObject.SetActive(true);
+        animator.SetTrigger("Slash");
         yield return Delay;
         coll.gameObject.SetActive(false);
     }
