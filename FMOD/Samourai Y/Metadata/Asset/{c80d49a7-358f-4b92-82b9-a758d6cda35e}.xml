@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{c80d49a7-358f-4b92-82b9-a758d6cda35e}">
+		<property name="assetPath">
+			<value>SFX/Metronome/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{eabc2de0-0ecf-4ece-ba96-ddbad428f2fa}</destination>
+		</relationship>
+	</object>
+</objects>

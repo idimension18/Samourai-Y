@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{505740e6-29bc-470d-a97f-11193fd56503}">
+		<property name="assetPath">
+			<value>SFX/Metronome/yon.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.1153741496598641</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{eabc2de0-0ecf-4ece-ba96-ddbad428f2fa}</destination>
+		</relationship>
+	</object>
+</objects>
