@@ -4,16 +4,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private float[] sequence;
+    Animator animator;
 
     void Start()
     {
         GenerateSequence();
         StartCoroutine(Shoot(2f));
-    }
-
-    void Update()
-    {
-        
+        animator = GetComponent<Animator>();
     }
 
     void GenerateSequence()
@@ -45,6 +42,7 @@ public class Enemy : MonoBehaviour
             clone.transform.position= bullet.transform.position + Vector3.left;
             clone.SetActive(true);
             Debug.Log("Shoot after " + sequence[i].ToString() + " seconds");
+            animator.SetTrigger("Shoot");
         }
     }
 
