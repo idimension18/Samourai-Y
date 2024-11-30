@@ -1,18 +1,52 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
     public static int score;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float cooldown = 0.1f;
+    public static Vector3 pos;
+    private WaitForSeconds Delay;
+
+    private InputSystem_Actions inputs;
+    [SerializeField] private Collider2D fireLGO;
+    [SerializeField] private Collider2D fireRGO;
+    [SerializeField] private Collider2D fireTopGO;
+
+    void Awake()
     {
         score = 0;
+        Delay = new WaitForSeconds(cooldown);
+        inputs = new InputSystem_Actions();
+        pos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        inputs.PlayerSlash.FireL.Enable();
+        inputs.PlayerSlash.FireR.Enable();
+        inputs.PlayerSlash.FireTop.Enable();
     }
+
+    private void Start()
+    {
+        inputs.PlayerSlash.FireL.started += context => StartCoroutine(InputCoroutine(fireLGO));
+        inputs.PlayerSlash.FireR.started += context => StartCoroutine(InputCoroutine(fireRGO));
+        inputs.PlayerSlash.FireTop.started += context => StartCoroutine(InputCoroutine(fireTopGO));
+    }
+
+
+
+    IEnumerator InputCoroutine(Collider2D coll)
+    {
+        coll.gameObject.SetActive(true);
+        yield return Delay;
+        coll.gameObject.SetActive(false);
+    }
+
+
 }
