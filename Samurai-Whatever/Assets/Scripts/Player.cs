@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     public static int score;
     [SerializeField] private float cooldown = 0.1f;
+    public static Vector3 pos;
     private WaitForSeconds Delay;
 
     private InputSystem_Actions inputs;
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
         score = 0;
         Delay = new WaitForSeconds(cooldown);
         inputs = new InputSystem_Actions();
-
+        pos = transform.position;
     }
 
     private void OnEnable()

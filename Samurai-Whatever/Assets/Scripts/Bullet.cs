@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Vector3 dir = - transform.position.normalized;
+        Vector3 dir = (Player.pos - transform.position).normalized;
         rb.linearVelocity = dir * speed;
     }
 
