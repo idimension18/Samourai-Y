@@ -3,17 +3,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     private float[] _sequence;
+    Animator animator;
+
 
     void Start()
     {
         GenerateSequence();
         StartCoroutine(Shoot(2f));
-    }
-
-    void Update()
-    {
-        
+        animator = GetComponent<Animator>();
     }
 
     void GenerateSequence()
@@ -44,8 +43,11 @@ public class Enemy : MonoBehaviour
             GameObject clone = Instantiate(bullet);
             clone.transform.position= bullet.transform.position + Vector3.left;
             clone.SetActive(true);
+
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PreviewR");
             Debug.Log("Shoot after " + _sequence[i].ToString() + " seconds");
+            animator.SetTrigger("Shoot");
+
         }
     }
 
