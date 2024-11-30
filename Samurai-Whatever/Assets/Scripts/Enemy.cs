@@ -22,8 +22,8 @@ public class Enemy : MonoBehaviour
             case 0:
                 sequence = new float[3];
                 sequence[0] = 1f;
-                sequence[1] = 2f;
-                sequence[2] = 3f;
+                sequence[1] = 1f;
+                sequence[2] = 1f;
                 break;
             case 1:
                 sequence[0] = 1f;
@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
             GameObject clone = Instantiate(bullet);
             clone.transform.position= bullet.transform.position + Vector3.left;
             clone.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PreviewR");
             Debug.Log("Shoot after " + sequence[i].ToString() + " seconds");
         }
     }
