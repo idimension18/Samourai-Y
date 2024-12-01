@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
     private float[] _sequence;
     Animator animator;
     [SerializeField] private LevelScript level;
-    public SpriteRenderer spriteRenderer;
     public bool isClear;
+    private Vector3 _reverseVector= new Vector3(-1,1,1);
 
     void Start()
     {
@@ -70,6 +70,14 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Die");
             yield return new WaitForSeconds(0.5f);
             gameObject.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (this.transform.position.x > 0 || this.transform.localScale.x>0)
+        {
+            this.transform.localScale = _reverseVector;
         }
     }
 
