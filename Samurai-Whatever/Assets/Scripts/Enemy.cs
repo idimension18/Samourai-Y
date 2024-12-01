@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        isClear = false;
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         Animator animator_metronome = metronome_visu.GetComponent<Animator>();
@@ -101,6 +102,7 @@ public class Enemy : MonoBehaviour
             }
             temps_restant = 4 * pas;
             animator.SetTrigger("Die");
+<<<<<<< Updated upstream
             yield return new WaitForSeconds(1f);
             temps_restant -= 1f;
             //spawn de l'ennemi suivant
@@ -129,6 +131,11 @@ public class Enemy : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(temps_restant); //On attend pour que le tout dure une mesure
+=======
+            isClear = true;
+            yield return new WaitForSeconds(0.5f);
+            gameObject.SetActive(false);
+>>>>>>> Stashed changes
         }
         jouer_metronome = false;
     }
@@ -140,5 +147,15 @@ public class Enemy : MonoBehaviour
             this.transform.localScale = _reverseVector;
         }
     }
+    public IEnumerator WaitCompletion()
+    {
+        Debug.Log("Waiting defeat");
 
+        while (!isClear)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Enemy Defeated");
+    }
 }

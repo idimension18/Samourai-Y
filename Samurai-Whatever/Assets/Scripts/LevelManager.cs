@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,13 +15,8 @@ public class LevelManager : MonoBehaviour
         {
             _levels[i].LaunchLevel();
             Debug.Log("Level "+ i.ToString()+" begins");
-
+            _levels[i].WaitCompletion();
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

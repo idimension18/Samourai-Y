@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class LevelScript : ScriptableObject
     [SerializeField] private Enemy enemyPrefab;
 
     [Tooltip("Niveau termin� ou non")]
-    [SerializeField] private bool _clear;
+    [SerializeField] private bool _isClear;
     [SerializeField] private int _dist;
 
 
@@ -20,17 +21,17 @@ public class LevelScript : ScriptableObject
         {
             if (_enemies[n].getRight())
             {
-                if (Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemy))
+                if (Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemyR))
                 {
-                    newEnemy.SetLevel(this);
+                    newEnemyR.SetLevel(this);
                 }
             }
 
             else 
             {
-                if (Instantiate(enemyPrefab, _dist * Vector2.left + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemy))
+                if (Instantiate(enemyPrefab, _dist * Vector2.left + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemyL))
                 {
-                    newEnemy.SetLevel(this);
+                    newEnemyL.SetLevel(this);
                 }
             }
         }
@@ -50,7 +51,8 @@ public class LevelScript : ScriptableObject
     public List<EnemyScript> getEnemyList()
     {
         return _enemies;
-    } 
+    }
+    
 }
 
 
