@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class Enemy : MonoBehaviour
 {
 
     private float[] _sequence;
     Animator animator;
     [SerializeField] private LevelScript level;
-
+    public SpriteRenderer spriteRenderer;
     public bool isClear;
 
     void Start()
@@ -16,6 +17,11 @@ public class Enemy : MonoBehaviour
         float pas = 60f/bpm;
         StartCoroutine(Shoot(pas));
         animator = GetComponent<Animator>();
+    }
+
+    public void SetLevel(LevelScript lvl)
+    {
+        this.level = lvl;
     }
 
     IEnumerator Shoot(float pas)

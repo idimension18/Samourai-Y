@@ -20,9 +20,19 @@ public class LevelScript : ScriptableObject
         {
             if (_enemies[n].getRight())
             {
-                Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up, Quaternion.identity);
+                if (Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemy))
+                {
+                    newEnemy.SetLevel(this);
+                }
             }
-            else Instantiate(enemyPrefab, _dist * Vector2.left + Vector2.up, Quaternion.identity);
+
+            else 
+            {
+                if (Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemy))
+                {
+                    newEnemy.SetLevel(this);
+                }
+            }
         }
     }
     [SerializeField] private int bpm;

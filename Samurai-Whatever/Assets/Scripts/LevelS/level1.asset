@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: level1
   m_EditorClassIdentifier: 
   _enemies:
-  - _right: 1
+  - _right: 0
     _timings:
     - 0
     - 2
