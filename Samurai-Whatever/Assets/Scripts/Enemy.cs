@@ -12,16 +12,16 @@ public class Enemy : MonoBehaviour
     public bool isClear;
     private Vector3 _reverseVector= new Vector3(-1,1,1);
     static private bool jouer_metronome = true; 
-    [SerializeField] private GameObject metronome_visu;
+    private GameObject metronome_visu;
     static public event Action OnLevelClear;
 
     void Start()
     {
+        metronome_visu = Metronome.instance.gameObject;
         isClear = false;
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         Animator animator_metronome = metronome_visu.GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(Beats(pas, animator_metronome));
         StartCoroutine(Shoot(pas));
