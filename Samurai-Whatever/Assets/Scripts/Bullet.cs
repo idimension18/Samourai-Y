@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float _speed = 10f;
     Rigidbody2D rb;
 
     private void Awake()
@@ -14,7 +15,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         Vector3 dir = (Player.pos - transform.position).normalized;
-        rb.linearVelocity = dir * speed;
+        rb.linearVelocity = dir * _speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

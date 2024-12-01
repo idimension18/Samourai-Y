@@ -6,8 +6,35 @@ using UnityEngine;
 public class LevelScript : ScriptableObject
 {
     [SerializeField] private List<EnemyScript> _enemies;
-    [Tooltip("Niveau terminé ou non")]
+    [SerializeField] private Enemy enemyPrefab;
+
+    [Tooltip("Niveau terminï¿½ ou non")]
     [SerializeField] private bool _clear;
+    [SerializeField] private int _dist;
+
+
+    public void LaunchLevel()
+    {
+        int n;
+        for(n = 0; n< _enemies.Count; n++)
+        {
+            if (_enemies[n].getRight())
+            {
+                if (Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemy))
+                {
+                    newEnemy.SetLevel(this);
+                }
+            }
+
+            else 
+            {
+                if (Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up * 0.7f, Quaternion.identity).TryGetComponent(out Enemy newEnemy))
+                {
+                    newEnemy.SetLevel(this);
+                }
+            }
+        }
+    }
     [SerializeField] private int bpm;
 
     public int getBPM()
@@ -36,6 +63,11 @@ public class LevelScript : ScriptableObject
     public float[] getTimings()
     {
         return _timings;
+    }
+
+    public bool getRight()
+    {
+        return _right;
     }
 }
 
