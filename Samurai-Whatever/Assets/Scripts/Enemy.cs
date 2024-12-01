@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         Animator animator_metronome = metronome_visu.GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(Beats(pas, animator_metronome));
         StartCoroutine(Shoot(pas));
