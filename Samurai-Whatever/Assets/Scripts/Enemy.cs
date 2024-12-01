@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         Animator animator_metronome = metronome_visu.GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(Beats(pas, animator_metronome));
         StartCoroutine(Shoot(pas));
@@ -31,8 +32,8 @@ public class Enemy : MonoBehaviour
     {
         while (jouer_metronome)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
             animator_metronome.SetTrigger("beat");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Beats");
             yield return new WaitForSeconds(pas);
         }
         
