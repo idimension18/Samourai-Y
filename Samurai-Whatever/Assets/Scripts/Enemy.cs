@@ -11,12 +11,15 @@ public class Enemy : MonoBehaviour
     {
         int bpm = level.getBPM();
         float pas = 60f/bpm;
-        StartCoroutine(Shoot(pas));
+        StartCoroutine(PlayLevel(pas));
         animator = GetComponent<Animator>();
     }
 
-    IEnumerator Shoot(float pas)
+    IEnumerator PlayLevel(float pas)
     {
+        //Variables
+        EnemyScript currentEnemy;
+
         //metronome
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
         yield return new WaitForSeconds(pas); //
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour
         for (int j=0; j<level.getNbrEnnemies(); j++)
         {
             sequence = level.getEnemyList()[j].getTimings();
+            currentEnemy = level.getEnemyList()[j];
             Debug.Log(sequence);
             
             //preview du son
@@ -58,9 +62,36 @@ public class Enemy : MonoBehaviour
             }
             yield return new WaitForSeconds(temps_restant);
             //mort des ennemis
+            temps_restant = 4 * pas;
             animator.SetTrigger("Die");
-            yield return new WaitForSeconds(0.5f);
-            gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            temps_restant -= 1f;
+            //spawn de l'ennemi suivant
+            if (j< level.getNbrEnnemies()-1) //on vérifie que l'ennemi n'est pas le dernier ennemi
+            {
+                
+                if (currentEnemy.getRight()) //Si l'ennemi est à droite 
+                {
+                    Vector3 from = new Vector3(5.5f, 0.71f, 0f);
+                    Vector3 to = new Vector3(2.71f, 0.71f, 0f);
+                    transform.position = from;
+                    animator.SetTrigger("Idle");
+                    yield return new WaitForSeconds(0.5f);
+                    temps_restant -= 0.5f;
+                    float temps_passe = 0;
+                    float duree_deplacement = 1.5f * pas;
+
+                    while (temps_passe < duree_deplacement)
+                    {
+                        float t = temps_passe / duree_deplacement;
+                        transform.position = Vector3.Lerp(from, to, t);
+                        temps_passe += Time.deltaTime;
+                        temps_restant -= Time.deltaTime;
+                        yield return null;
+                    }
+                }
+            }
+            yield return new WaitForSeconds(temps_restant); //On attend pour que le tout dure une mesure
         }
     }
 

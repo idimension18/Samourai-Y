@@ -37,5 +37,10 @@ public class LevelScript : ScriptableObject
     {
         return _timings;
     }
+
+    public bool getRight()
+    {
+        return _right;
+    }
 }
 

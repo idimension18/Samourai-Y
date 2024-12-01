@@ -15,13 +15,13 @@ public class GameOverScreen : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Game");
         Time.timeScale = 1;
     }
 
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
 }
