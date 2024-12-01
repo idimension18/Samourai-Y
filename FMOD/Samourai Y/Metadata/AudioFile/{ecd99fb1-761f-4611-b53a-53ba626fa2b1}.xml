@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ecd99fb1-761f-4611-b53a-53ba626fa2b1}">
 		<property name="assetPath">
-			<value>SFX/son balle 2 preview v2.wav</value>
+			<value>SFX/Game/son balle 2 preview v2.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

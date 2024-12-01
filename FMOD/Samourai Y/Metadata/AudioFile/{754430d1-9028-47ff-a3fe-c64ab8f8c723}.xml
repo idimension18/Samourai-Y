@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{754430d1-9028-47ff-a3fe-c64ab8f8c723}">
 		<property name="assetPath">
-			<value>SFX/katana slash.wav</value>
+			<value>SFX/Game/katana slash.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
