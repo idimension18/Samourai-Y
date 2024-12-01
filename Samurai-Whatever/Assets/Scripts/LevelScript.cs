@@ -13,9 +13,9 @@ public class LevelScript : ScriptableObject
     [SerializeField] private bool _isClear;
     [SerializeField] private int _dist;
 
-
     public void LaunchLevel()
     {
+        _isClear = false;
         int n;
         for(n = 0; n< _enemies.Count; n++)
         {
@@ -35,6 +35,8 @@ public class LevelScript : ScriptableObject
                 }
             }
         }
+
+        Enemy.OnLevelClear += SetFlag;
     }
     [SerializeField] private int bpm;
 
@@ -53,6 +55,10 @@ public class LevelScript : ScriptableObject
         return _enemies;
     }
     
+    public void SetFlag()
+    {
+        this._isClear = true;
+    }
 }
 
 

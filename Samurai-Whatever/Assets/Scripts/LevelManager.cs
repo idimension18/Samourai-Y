@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
         {
             _levels[i].LaunchLevel();
             Debug.Log("Level "+ i.ToString()+" begins");
-            _levels[i].WaitCompletion();
+            Enemy.OnLevelClear += _levels[i].SetFlag;
         }
     }
 
