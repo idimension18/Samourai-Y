@@ -5,11 +5,7 @@ public class Pause_menu : MonoBehaviour
 {
    [SerializeField] public GameObject pauseMenu;
    
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
-    }
+    
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

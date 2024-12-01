@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     static private bool jouer_metronome = true; 
     [SerializeField] private GameObject metronome_visu;
 
-
     void Start()
     {
         int bpm = level.getBPM();
