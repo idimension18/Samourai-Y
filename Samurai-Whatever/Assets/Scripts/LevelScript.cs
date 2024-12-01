@@ -37,6 +37,7 @@ public class LevelScript : ScriptableObject
         }
 
         Enemy.OnLevelClear += SetFlag;
+        WaitCompletion();
     }
     [SerializeField] private int bpm;
 
@@ -58,7 +59,21 @@ public class LevelScript : ScriptableObject
     public void SetFlag()
     {
         this._isClear = true;
+        Debug.Log("Flag Set");
     }
+
+    public IEnumerator WaitCompletion()
+    {
+        Debug.Log("Level en cours");
+
+        while (!_isClear)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Fin de niveau");
+    }
+
 }
 
 

@@ -105,9 +105,10 @@ public class Enemy : MonoBehaviour
             }
             temps_restant = 4 * pas;
             animator.SetTrigger("Die");
-            OnLevelClear.Invoke();
             yield return new WaitForSeconds(1f);
             temps_restant -= 1f;
+            Debug.Log("Enemy Dead! INvoking");
+            OnLevelClear.Invoke();
 
 
             //spawn de l'ennemi suivant
@@ -147,16 +148,5 @@ public class Enemy : MonoBehaviour
         {
             this.transform.localScale = _reverseVector;
         }
-    }
-    public IEnumerator WaitCompletion()
-    {
-        Debug.Log("Waiting defeat");
-
-        while (!isClear)
-        {
-            yield return null;
-        }
-
-        Debug.Log("Enemy Defeated");
     }
 }
