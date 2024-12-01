@@ -11,20 +11,36 @@ public class Enemy : MonoBehaviour
     {
         int bpm = level.getBPM();
         float pas = 60f/bpm;
+
+        StartCoroutine(Beats(pas));
         StartCoroutine(Shoot(pas));
         animator = GetComponent<Animator>();
+    }
+
+    IEnumerator Beats(float pas)
+    {
+        while (true)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+            yield return new WaitForSeconds(pas);
+        }
     }
 
     IEnumerator Shoot(float pas)
     {
         //metronome
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
+        yield return new WaitForSeconds(pas*2); //
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Ni");
+        yield return new WaitForSeconds(pas*2); //
+        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
         yield return new WaitForSeconds(pas); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Ni");
         yield return new WaitForSeconds(pas); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/San");
         yield return new WaitForSeconds(pas); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Yon");
         yield return new WaitForSeconds(pas); //
 
         for (int j=0; j<level.getNbrEnnemies(); j++)

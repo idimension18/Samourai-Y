@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{3e3d8216-9adb-4eb1-8541-b7d267fa1414}">
 		<property name="assetPath">
-			<value>SFX/mort.wav</value>
+			<value>SFX/Game/mort.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

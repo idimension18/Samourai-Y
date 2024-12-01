@@ -366,6 +366,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 430933379050274259, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
+      propertyPath: m_Radius
+      value: 1.4989814
+      objectReference: {fileID: 0}
+    - target: {fileID: 430933379050274259, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.16787255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509420365352391838, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
+      propertyPath: m_Radius
+      value: 1.024609
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509420365352391838, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.52460897
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647655012404421527, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1940360418003611888, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -805,22 +825,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1680021297347326354, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680021297347326354, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
-      propertyPath: m_Color.b
-      value: 0.94404185
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680021297347326354, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9811321
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680021297347326354, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8006408
-      objectReference: {fileID: 0}
     - target: {fileID: 3811301969512204159, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -887,10 +891,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8067344867175700350, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067344867175700350, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
-      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
