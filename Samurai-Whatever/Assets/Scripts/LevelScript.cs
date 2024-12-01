@@ -8,7 +8,7 @@ public class LevelScript : ScriptableObject
     [SerializeField] private List<EnemyScript> _enemies;
     [SerializeField] private Enemy enemyPrefab;
 
-    [Tooltip("Niveau terminé ou non")]
+    [Tooltip("Niveau terminï¿½ ou non")]
     [SerializeField] private bool _clear;
     [SerializeField] private int _dist;
 
@@ -29,12 +29,34 @@ public class LevelScript : ScriptableObject
 
         }
     }
+    [SerializeField] private int bpm;
+
+    public int getBPM()
+    {
+        return bpm;
+    }
+
+    public int getNbrEnnemies()
+    {
+        return _enemies.ToArray().Length;
+    }
+
+    public List<EnemyScript> getEnemyList()
+    {
+        return _enemies;
+    } 
 }
 
 
 [Serializable] public class EnemyScript
 {
     [Tooltip("is false, then comes from left")]
-    [SerializeField] public bool right { get; private set; }
-    [SerializeField] public float[] _timings {  get; private set; }
+    [SerializeField] private bool _right;
+    [SerializeField] private float[] _timings;
+
+    public float[] getTimings()
+    {
+        return _timings;
+    }
 }
+
