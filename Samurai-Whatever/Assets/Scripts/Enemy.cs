@@ -32,32 +32,32 @@ public class Enemy : MonoBehaviour
 
         for (int j=0; j<level.getNbrEnnemies(); j++)
         {
-            sequence = level.getEnemyList()[j].getTimings();
-            Debug.Log(sequence);
+            _sequence = level.getEnemyList()[j].getTimings();
+            Debug.Log(_sequence);
             
             //preview du son
             float temps_restant = 4 * pas; //temps d'attente apr�s la derni�re note de la s�quence
-            for (int i = 0; i < sequence.Length; i++)
+            for (int i = 0; i < _sequence.Length; i++)
             {
-                yield return new WaitForSeconds(sequence[i] * pas); //
+                yield return new WaitForSeconds(_sequence[i] * pas); //
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PreviewR");
-                temps_restant -= sequence[i] * pas;
+                temps_restant -= _sequence[i] * pas;
             }
             yield return new WaitForSeconds(temps_restant);
             
             //shoot
             temps_restant = 4 * pas; //temps d'attente apr�s la derni�re note de la s�quence
-            for (int i = 0; i < sequence.Length; i++)
+            for (int i = 0; i < _sequence.Length; i++)
             {
-                yield return new WaitForSeconds(sequence[i] * pas); //
+                yield return new WaitForSeconds(_sequence[i] * pas); //
                 GameObject bullet = transform.GetChild(0).gameObject;
                 GameObject clone = Instantiate(bullet);
                 clone.transform.position = bullet.transform.position + Vector3.left;
                 clone.SetActive(true);
                 animator.SetTrigger("Shoot");
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BulletR");
-                Debug.Log("Shoot after " + sequence[i].ToString() + " seconds");
-                temps_restant -= sequence[i] * pas;
+                Debug.Log("Shoot after " + _sequence[i].ToString() + " seconds");
+                temps_restant -= _sequence[i] * pas;
             }
             yield return new WaitForSeconds(temps_restant);
             //mort des ennemis

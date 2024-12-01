@@ -18,15 +18,11 @@ public class LevelScript : ScriptableObject
         int n;
         for(n = 0; n< _enemies.Count; n++)
         {
-            if (_enemies[n].right)
+            if (_enemies[n].getRight())
             {
-                Instantiate(enemyPrefab, _dist * Vector2.right, Quaternion.identity);
+                Instantiate(enemyPrefab, _dist * Vector2.right + Vector2.up, Quaternion.identity);
             }
-            else Instantiate(enemyPrefab, _dist * Vector2.left, Quaternion.identity);
-        }
-        if (_clear)
-        {
-
+            else Instantiate(enemyPrefab, _dist * Vector2.left + Vector2.up, Quaternion.identity);
         }
     }
     [SerializeField] private int bpm;
@@ -57,6 +53,11 @@ public class LevelScript : ScriptableObject
     public float[] getTimings()
     {
         return _timings;
+    }
+
+    public bool getRight()
+    {
+        return _right;
     }
 }
 
