@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
@@ -24,8 +25,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out player))
         {
             Debug.Log("GAME OVER");
-            //TODO Game Over
-            Application.Quit();
+            SceneManager.LoadScene("Death Menu");
         }
     
     }

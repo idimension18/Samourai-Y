@@ -1,33 +1,39 @@
 using System.Collections;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 
 
 public class Enemy : MonoBehaviour
 {
-
     private float[] _sequence;
     Animator animator;
     [SerializeField] private LevelScript level;
     public SpriteRenderer spriteRenderer;
     public bool isClear;
+    static private bool jouer_metronome = true; 
+    [SerializeField] private GameObject metronome_visu;
+
 
     void Start()
     {
         int bpm = level.getBPM();
         float pas = 60f/bpm;
+        Animator animator_metronome = metronome_visu.GetComponent<Animator>();
 
-        StartCoroutine(Beats(pas));
+        StartCoroutine(Beats(pas, animator_metronome));
         StartCoroutine(Shoot(pas));
         animator = GetComponent<Animator>();
     }
 
-    IEnumerator Beats(float pas)
+    IEnumerator Beats(float pas, Animator animator_metronome)
     {
-        while (true)
+        while (jouer_metronome)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+            animator_metronome.SetTrigger("beat");
             yield return new WaitForSeconds(pas);
         }
+        
     }
     public void SetLevel(LevelScript lvl)
     {
@@ -36,6 +42,9 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Shoot(float pas)
     {
+        //Variables
+        EnemyScript currentEnemy;
+
         //metronome
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
         yield return new WaitForSeconds(pas*2); //
@@ -54,7 +63,7 @@ public class Enemy : MonoBehaviour
         for (int j=0; j<level.getNbrEnnemies(); j++)
         {
             _sequence = level.getEnemyList()[j].getTimings();
-            Debug.Log(_sequence);
+            currentEnemy = level.getEnemyList()[j];
             
             //preview du son
             float temps_restant = 4 * pas; //temps d'attente apr�s la derni�re note de la s�quence
@@ -82,10 +91,46 @@ public class Enemy : MonoBehaviour
             }
             yield return new WaitForSeconds(temps_restant);
             //mort des ennemis
+            float bpm = 60f / pas;
+            if (bpm<120f)
+            {
+                temps_restant = 4 * pas;
+            } else
+            {
+                temps_restant = 8 * pas;
+            }
+            temps_restant = 4 * pas;
             animator.SetTrigger("Die");
-            yield return new WaitForSeconds(0.5f);
-            gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            temps_restant -= 1f;
+            //spawn de l'ennemi suivant
+            if (j< level.getNbrEnnemies()-1) //on vérifie que l'ennemi n'est pas le dernier ennemi
+            {
+                
+                if (currentEnemy.getRight()) //Si l'ennemi est à droite 
+                {
+                    Vector3 from = new Vector3(5.5f, 0.71f, 0f);
+                    Vector3 to = new Vector3(2.71f, 0.71f, 0f);
+                    transform.position = from;
+                    animator.SetTrigger("Idle");
+                    yield return new WaitForSeconds(0.5f);
+                    temps_restant -= 0.5f;
+                    float temps_passe = 0;
+                    float duree_deplacement = 1.5f * pas;
+
+                    while (temps_passe < duree_deplacement)
+                    {
+                        float t = temps_passe / duree_deplacement;
+                        transform.position = Vector3.Lerp(from, to, t);
+                        temps_passe += Time.deltaTime;
+                        temps_restant -= Time.deltaTime;
+                        yield return null;
+                    }
+                }
+            }
+            yield return new WaitForSeconds(temps_restant); //On attend pour que le tout dure une mesure
         }
+        jouer_metronome = false;
     }
 
 }
