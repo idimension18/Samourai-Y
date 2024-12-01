@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{025d8111-1445-4fcd-878f-a0e240c013d4}">
 		<property name="name">
-			<value>Preview2L</value>
+			<value>Beats</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -98,11 +98,7 @@
 			<destination>{59aadb89-4423-4784-8bc0-47b035c078d7}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{8e533274-3da3-4139-b6a8-13bfa96c61a7}">
-		<property name="stereoPan">
-			<value>-44</value>
-		</property>
-	</object>
+	<object class="MixerBusPanner" id="{8e533274-3da3-4139-b6a8-13bfa96c61a7}" />
 	<object class="SingleSound" id="{3141f23a-24f2-4023-a966-e3411eb02b3e}">
 		<relationship name="audioFile">
 			<destination>{621893c3-78c6-47e4-bd9f-87b4f8ca7d46}</destination>

@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Beats");
             yield return new WaitForSeconds(pas);
         }
     }
