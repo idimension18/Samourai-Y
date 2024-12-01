@@ -104,7 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 0}
   isClear: 0
-  metronome_visu: {fileID: 0}
 --- !u!95 &7551814880223528261
 Animator:
   serializedVersion: 7
@@ -157,7 +156,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.03, y: -0.02, z: 0}
-  m_LocalScale: {x: 0.7417848, y: 0.42211902, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8067344867175700350}
@@ -206,7 +205,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19898d5ef76c5b444b88a0a9290c9015, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
