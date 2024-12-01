@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: level1
   m_EditorClassIdentifier: 
   _enemies:
-  - _right: 0
+  - _right: 1
     _timings:
     - 0
     - 2
-  - _right: 0
+  - _right: 1
     _timings:
     - 0
     - 1
     - 1
     - 1
-  - _right: 0
+  - _right: 1
     _timings:
     - 0
     - 0.5
     - 0.5
     - 1
     - 1
-  - _right: 0
+  - _right: 1
     _timings:
     - 0
     - 1
@@ -38,7 +38,7 @@ MonoBehaviour:
     - 0.5
     - 1
     - 0.5
-  - _right: 0
+  - _right: 1
     _timings:
     - 0
     - 1
