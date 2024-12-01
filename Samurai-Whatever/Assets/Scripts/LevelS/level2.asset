@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: level2
   m_EditorClassIdentifier: 
   _enemies:
-  - _right: 0
+  - _right: 1
     _timings:
-    - 1
-    - 1
-    - 1
-    - 1
-  _clear: 0
+    - 0
+    - 3
+  enemyPrefab: {fileID: 5439672360329435334, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
+  _isClear: 0
+  _dist: 4
+  bpm: 80
