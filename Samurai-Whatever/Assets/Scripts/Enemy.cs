@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -62,6 +63,14 @@ public class Enemy : MonoBehaviour
             }
             yield return new WaitForSeconds(temps_restant);
             //mort des ennemis
+            float bpm = 60f / pas;
+            if (bpm<120f)
+            {
+                temps_restant = 4 * pas;
+            } else
+            {
+                temps_restant = 8 * pas;
+            }
             temps_restant = 4 * pas;
             animator.SetTrigger("Die");
             yield return new WaitForSeconds(1f);
