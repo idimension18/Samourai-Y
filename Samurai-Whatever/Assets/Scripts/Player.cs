@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public static int score;
     [SerializeField] private float cooldown = 0.1f;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer sprite;
+
     public static Vector3 pos;
     private WaitForSeconds Delay;
 
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
         pos = transform.position;
 
         animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -37,8 +40,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        inputs.PlayerSlash.FireL.started += context => StartCoroutine(InputCoroutine(fireLGO));
-        inputs.PlayerSlash.FireR.started += context => StartCoroutine(InputCoroutine(fireRGO));
+        inputs.PlayerSlash.FireL.started += context => { animator.SetTrigger("Slash"); StartCoroutine(InputCoroutine(fireLGO)); sprite.flipX = false; };
+        inputs.PlayerSlash.FireR.started += context => { animator.SetTrigger("Slash"); StartCoroutine(InputCoroutine(fireRGO)); sprite.flipX = true; };
         inputs.PlayerSlash.FireTop.started += context => StartCoroutine(InputCoroutine(fireTopGO));
     }
 
@@ -47,7 +50,6 @@ public class Player : MonoBehaviour
     IEnumerator InputCoroutine(Collider2D coll)
     {
         coll.gameObject.SetActive(true);
-        animator.SetTrigger("Slash");
         yield return Delay;
         coll.gameObject.SetActive(false);
     }

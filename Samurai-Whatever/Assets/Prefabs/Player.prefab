@@ -68,8 +68,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.52460897}
+  m_Radius: 1.024609
 --- !u!114 &8317720070113893548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,8 +205,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0.16787255, y: 0}
+  m_Radius: 1.4989814
 --- !u!114 &5796368506265650694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,8 +342,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.078733444, y: 0}
+  m_Radius: 1.3910315
 --- !u!114 &6959831949532693626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 8307221651519449229}
   - component: {fileID: 2459475892814878592}
   - component: {fileID: 6167966154695493230}
-  - component: {fileID: 3125423645944104692}
+  - component: {fileID: 5783691007110513509}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -550,6 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.1
   animator: {fileID: 0}
+  sprite: {fileID: 0}
   fireLGO: {fileID: 2228820435965978971}
   fireRGO: {fileID: 430933379050274259}
   fireTopGO: {fileID: 1509420365352391838}
@@ -587,8 +588,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.003723383, y: -0.11914733}
-  m_Size: {x: 0.32234967, y: 0.8063856}
+  m_Offset: {x: -0.0066171885, y: -0.13776028}
+  m_Size: {x: 0.03695035, y: 0.8436115}
   m_Direction: 0
 --- !u!95 &6167966154695493230
 Animator:
@@ -612,7 +613,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3125423645944104692
+--- !u!114 &5783691007110513509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
