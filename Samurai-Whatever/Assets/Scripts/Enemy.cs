@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private float[] sequence;
+    Animator animator;
     [SerializeField] private LevelScript level;
 
     void Start()
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         StartCoroutine(Shoot(pas));
+        animator = GetComponent<Animator>();
     }
 
     IEnumerator Shoot(float pas)
@@ -31,7 +33,7 @@ public class Enemy : MonoBehaviour
             Debug.Log(sequence);
             
             //preview du son
-            float temps_restant = 4 * pas; //temps d'attente après la dernière note de la séquence
+            float temps_restant = 4 * pas; //temps d'attente aprï¿½s la derniï¿½re note de la sï¿½quence
             for (int i = 0; i < sequence.Length; i++)
             {
                 yield return new WaitForSeconds(sequence[i] * pas); //
@@ -41,7 +43,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(temps_restant);
             
             //shoot
-            temps_restant = 4 * pas; //temps d'attente après la dernière note de la séquence
+            temps_restant = 4 * pas; //temps d'attente aprï¿½s la derniï¿½re note de la sï¿½quence
             for (int i = 0; i < sequence.Length; i++)
             {
                 yield return new WaitForSeconds(sequence[i] * pas); //
@@ -49,12 +51,16 @@ public class Enemy : MonoBehaviour
                 GameObject clone = Instantiate(bullet);
                 clone.transform.position = bullet.transform.position + Vector3.left;
                 clone.SetActive(true);
+                animator.SetTrigger("Shoot");
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BulletR");
                 Debug.Log("Shoot after " + sequence[i].ToString() + " seconds");
                 temps_restant -= sequence[i] * pas;
             }
             yield return new WaitForSeconds(temps_restant);
             //mort des ennemis
+            animator.SetTrigger("Die");
+            yield return new WaitForSeconds(0.5f);
+            gameObject.SetActive(false);
         }
     }
 
