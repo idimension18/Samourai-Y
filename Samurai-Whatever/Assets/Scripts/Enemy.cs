@@ -5,26 +5,31 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private float[] sequence;
+    static private bool jouer_metronome = true; 
     Animator animator;
     [SerializeField] private LevelScript level;
+    [SerializeField] private GameObject metronome_visu;
 
     void Start()
     {
         int bpm = level.getBPM();
         float pas = 60f/bpm;
+        Animator animator_metronome = metronome_visu.GetComponent<Animator>();
 
-        StartCoroutine(Beats(pas));
+        StartCoroutine(Beats(pas, animator_metronome));
         StartCoroutine(Shoot(pas));
         animator = GetComponent<Animator>();
     }
 
-    IEnumerator Beats(float pas)
+    IEnumerator Beats(float pas, Animator animator_metronome)
     {
-        while (true)
+        while (jouer_metronome)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
+            animator_metronome.SetTrigger("beat");
             yield return new WaitForSeconds(pas);
         }
+        
     }
 
     IEnumerator Shoot(float pas)
@@ -51,7 +56,6 @@ public class Enemy : MonoBehaviour
         {
             sequence = level.getEnemyList()[j].getTimings();
             currentEnemy = level.getEnemyList()[j];
-            Debug.Log(sequence);
             
             //preview du son
             float temps_restant = 4 * pas; //temps d'attente apr�s la derni�re note de la s�quence
@@ -118,6 +122,7 @@ public class Enemy : MonoBehaviour
             }
             yield return new WaitForSeconds(temps_restant); //On attend pour que le tout dure une mesure
         }
+        jouer_metronome = false;
     }
 
 }
