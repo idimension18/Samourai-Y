@@ -497,7 +497,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2432531558235196493, guid: cbc0edbc8b4c83f4dac4cd39057eab69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -550,6 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.1
   animator: {fileID: 0}
+  sprite: {fileID: 0}
   fireLGO: {fileID: 2228820435965978971}
   fireRGO: {fileID: 430933379050274259}
   fireTopGO: {fileID: 1509420365352391838}
