@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 8307221651519449229}
   - component: {fileID: 2459475892814878592}
   - component: {fileID: 6167966154695493230}
+  - component: {fileID: 3125423645944104692}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -599,7 +600,7 @@ Animator:
   m_GameObject: {fileID: 1940360418003611888}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bd3c8f6dbf5bde4daff158affded006, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0e027f940afef164d960261cb7c308db, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -611,3 +612,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3125423645944104692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940360418003611888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2095486348
+      Data2: 1209398488
+      Data3: 1013867392
+      Data4: 584456715
+    Path: event:/SFX/Bullet2L
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

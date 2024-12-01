@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     private float[] _sequence;
     Animator animator;
 
+    public bool isClear;
 
     void Start()
     {

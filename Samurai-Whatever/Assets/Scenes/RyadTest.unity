@@ -285,11 +285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056853085487013237, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.72
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5056853085487013237, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.61
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 5056853085487013237, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -326,47 +326,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1940360418003611888, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 973752759}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
---- !u!1 &973752752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1940360418003611888, guid: db55824dcc779cd4387feadca331cc4a, type: 3}
-  m_PrefabInstance: {fileID: 293565674}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &973752759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973752752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -2095486348
-      Data2: 1209398488
-      Data3: 1013867392
-      Data4: 584456715
-    Path: event:/SFX/Bullet2L
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1238172684
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - {fileID: 11400000, guid: dddfaeecb54a48144a42d79d2f4c8e5f, type: 2}
-  - {fileID: 11400000, guid: dddfaeecb54a48144a42d79d2f4c8e5f, type: 2}
+  - {fileID: 11400000, guid: 6dc376e937b027b4ab430fa98d70270d, type: 2}
+  - {fileID: 11400000, guid: 1a906f710309cf04d8386f102595e271, type: 2}
 --- !u!4 &1238172686
 Transform:
   m_ObjectHideFlags: 0
@@ -428,11 +390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8067344867175700350, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4
+      value: 6.53
       objectReference: {fileID: 0}
     - target: {fileID: 8067344867175700350, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.15
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 8067344867175700350, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
       propertyPath: m_LocalPosition.z
