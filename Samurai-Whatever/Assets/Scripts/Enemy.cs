@@ -29,8 +29,8 @@ public class Enemy : MonoBehaviour
     {
         while (jouer_metronome)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Preview2L");
             animator_metronome.SetTrigger("beat");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Beats");
             yield return new WaitForSeconds(pas);
         }
         
