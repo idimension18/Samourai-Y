@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderKeywordFilter;
+using UnityEngine.SocialPlatforms.Impl;
+
 
 public class TestScore : MonoBehaviour
 {
@@ -18,7 +20,8 @@ public class TestScore : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.P))
         {
-            score.addScore(1);
+            score.addScore();
         } 
     }
+
 }
