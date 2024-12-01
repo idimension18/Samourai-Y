@@ -15,12 +15,13 @@ MonoBehaviour:
   _enemies:
   - _right: 1
     _timings:
-    - 1
+    - 0
     - 2
   - _right: 1
     _timings:
+    - 0
     - 1
-    - 2
-    - 2
-    - 2
+    - 1
+    - 1
   _clear: 0
+  bpm: 80
