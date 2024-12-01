@@ -19,4 +19,7 @@ MonoBehaviour:
     - 0.5
     - 1
     - 1
-  _clear: 0
+  enemyPrefab: {fileID: 5439672360329435334, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
+  _isClear: 0
+  _dist: 120
+  bpm: 75
