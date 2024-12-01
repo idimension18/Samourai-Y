@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEditor.TerrainTools;
 using UnityEngine;
@@ -8,13 +9,15 @@ public class Enemy : MonoBehaviour
     private float[] _sequence;
     Animator animator;
     [SerializeField] private LevelScript level;
-    public SpriteRenderer spriteRenderer;
     public bool isClear;
+    private Vector3 _reverseVector= new Vector3(-1,1,1);
     static private bool jouer_metronome = true; 
     [SerializeField] private GameObject metronome_visu;
+    static public event Action OnLevelClear;
 
     void Start()
     {
+        isClear = false;
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         Animator animator_metronome = metronome_visu.GetComponent<Animator>();
@@ -90,6 +93,7 @@ public class Enemy : MonoBehaviour
                 temps_restant -= _sequence[i] * pas;
             }
             yield return new WaitForSeconds(temps_restant);
+
             //mort des ennemis
             float bpm = 60f / pas;
             if (bpm<120f)
@@ -101,8 +105,11 @@ public class Enemy : MonoBehaviour
             }
             temps_restant = 4 * pas;
             animator.SetTrigger("Die");
+            OnLevelClear.Invoke();
             yield return new WaitForSeconds(1f);
             temps_restant -= 1f;
+
+
             //spawn de l'ennemi suivant
             if (j< level.getNbrEnnemies()-1) //on vérifie que l'ennemi n'est pas le dernier ennemi
             {
@@ -129,8 +136,27 @@ public class Enemy : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(temps_restant); //On attend pour que le tout dure une mesure
+
         }
         jouer_metronome = false;
     }
 
+    void Update()
+    {
+        if (this.transform.position.x > 0 || this.transform.localScale.x>0)
+        {
+            this.transform.localScale = _reverseVector;
+        }
+    }
+    public IEnumerator WaitCompletion()
+    {
+        Debug.Log("Waiting defeat");
+
+        while (!isClear)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Enemy Defeated");
+    }
 }
