@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class Score : MonoBehaviour
 {
@@ -13,12 +14,14 @@ public class Score : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        PlayerSlash.OnParry += addScore;
         score = 0;
     }
 
-    public void addScore(int newScore)
+    public void addScore()
     {
-        score += newScore;
+        score += 1;
+        Debug.Log("Score ?");
     }
 
     public void updateScore()
@@ -30,5 +33,10 @@ public class Score : MonoBehaviour
     void Update()
     {
         updateScore(); 
+    }
+
+    void OnDestroy()
+    {
+        PlayerSlash.OnParry -= addScore;
     }
 }
