@@ -10,23 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d70a2c442bfdaf43886c00e4e6c2501, type: 3}
-  m_Name: Debug
+  m_Name: levelD
   m_EditorClassIdentifier: 
   _enemies:
-  - _right: 0
-    _timings:
+  - _timings:
+    - 0
+  - _timings:
+    - 1
+    - 2
+  - _timings:
     - 0
     - 1
-    - 0.5
-  - _right: 1
-    _timings:
-    - 0.75
-    - 0.5
-    - 1
-  - _right: 1
-    _timings:
-    - 3
+    - 2.5
+  - _timings:
+    - 0
+    - 1.5
+    - 2.5
+  - _timings:
+    - 0
+    - 2
   enemyPrefab: {fileID: 5439672360329435334, guid: a3c6cae5b14e81547b1e5d6d2e4162aa, type: 3}
   _isClear: 0
-  _dist: 3
-  bpm: 75
+  _dist: 5
+  _right: 1
+  bpm: 80

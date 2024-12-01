@@ -22,9 +22,12 @@ public class Enemy : MonoBehaviour
         int bpm = level.getBPM();
         float pas = 60f/bpm;
         Animator animator_metronome = metronome_visu.GetComponent<Animator>();
-
-        StartCoroutine(Beats(pas, animator_metronome));
+        if (level.getRight())
+        {
+            StartCoroutine(Beats(pas, animator_metronome));
+        }
         StartCoroutine(Shoot(pas));
+
         animator = GetComponent<Animator>();
     }
 
@@ -49,18 +52,40 @@ public class Enemy : MonoBehaviour
         EnemyScript currentEnemy;
 
         //metronome
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
-        yield return new WaitForSeconds(pas*2); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Ni");
-        yield return new WaitForSeconds(pas*2); //
+        if (level.getRight())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
+        }
         
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
+        yield return new WaitForSeconds(pas*2); //
+        if (level.getRight())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Ni");
+        }
+        
+        yield return new WaitForSeconds(pas*2); //
+        if (level.getRight())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Itchi");
+        }
+        
         yield return new WaitForSeconds(pas); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Ni");
+        if (level.getRight())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Ni");
+        }
+          
         yield return new WaitForSeconds(pas); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/San");
+        if (level.getRight())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/San");
+        }
+        
         yield return new WaitForSeconds(pas); //
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Yon");
+        if (level.getRight())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Metronome/Yon");
+        }
         yield return new WaitForSeconds(pas); //
 
         for (int j=0; j<level.getNbrEnnemies(); j++)
@@ -73,7 +98,14 @@ public class Enemy : MonoBehaviour
             for (int i = 0; i < _sequence.Length; i++)
             {
                 yield return new WaitForSeconds(_sequence[i] * pas); //
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PreviewR");
+                if (level.getRight())
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PreviewR");
+                } else
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PreviewL");
+                }
+                
                 temps_restant -= _sequence[i] * pas;
             }
             yield return new WaitForSeconds(temps_restant);
@@ -88,7 +120,14 @@ public class Enemy : MonoBehaviour
                 clone.transform.position = bullet.transform.position + Vector3.left;
                 clone.SetActive(true);
                 animator.SetTrigger("Shoot");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BulletR");
+                if (level.getRight())
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BulletR");
+                } else
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BulletL");
+                }
+                
                 Debug.Log("Shoot after " + _sequence[i].ToString() + " seconds");
                 temps_restant -= _sequence[i] * pas;
             }
@@ -115,10 +154,29 @@ public class Enemy : MonoBehaviour
             if (j< level.getNbrEnnemies()-1) //on vérifie que l'ennemi n'est pas le dernier ennemi
             {
                 
-                if (currentEnemy.getRight()) //Si l'ennemi est à droite 
+                if (level.getRight()) //Si l'ennemi est à droite 
                 {
-                    Vector3 from = new Vector3(5.5f, 0.71f, 0f);
-                    Vector3 to = new Vector3(2.71f, 0.71f, 0f);
+                    Vector3 from = new Vector3(5.5f, 0.61f, 0f);
+                    Vector3 to = new Vector3(2.71f, 0.61f, 0f);
+                    transform.position = from;
+                    animator.SetTrigger("Idle");
+                    yield return new WaitForSeconds(0.5f);
+                    temps_restant -= 0.5f;
+                    float temps_passe = 0;
+                    float duree_deplacement = 1.5f * pas;
+
+                    while (temps_passe < duree_deplacement)
+                    {
+                        float t = temps_passe / duree_deplacement;
+                        transform.position = Vector3.Lerp(from, to, t);
+                        temps_passe += Time.deltaTime;
+                        temps_restant -= Time.deltaTime;
+                        yield return null;
+                    }
+                } else
+                {
+                    Vector3 from = new Vector3(-9f, 0.61f, 0f);
+                    Vector3 to = new Vector3(-6.15f, 0.61f, 0f);
                     transform.position = from;
                     animator.SetTrigger("Idle");
                     yield return new WaitForSeconds(0.5f);
@@ -140,13 +198,5 @@ public class Enemy : MonoBehaviour
 
         }
         jouer_metronome = false;
-    }
-
-    void Update()
-    {
-        if (this.transform.position.x > 0 || this.transform.localScale.x>0)
-        {
-            this.transform.localScale = _reverseVector;
-        }
     }
 }
